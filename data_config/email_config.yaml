@@ -1,0 +1,16 @@
+Email:
+  to_recivers:
+  - 419646560@qq.com
+  - 1648855816@qq.com
+  bcc_recivers: ~
+  cc_recivers:
+  - 16488553816@qq.com
+
+  Server:
+    QQ:
+      host: smtp.qq.com
+      port: 465
+      send_user: 1648855816@qq.com
+      password: qtamudwvvjpwcdhb
+
+
