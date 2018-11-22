@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 import xlrd,os
 from xlutils.copy import copy
-from data.get_data_config import GetDataConfig
+from data.get_config_path import GetDataConfig
 
 class OperationExcel(object):
     def __init__(self,file_name=None,sheet_id=0):

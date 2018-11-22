@@ -31,8 +31,8 @@ class DependentData(object):
         request_data = self.data.get_data_for_json(row)
         url = self.data.get_request_url(row)
         method = self.data.get_request_method(row)
-        header = self.data.get_header(row)
-        res = run_method.run_main(method,url,request_data,header)
+        # header = self.data.get_header(row)
+        res = run_method.run_main(method,url,request_data)
         return res
 
     # 根据依赖的key从执行依赖测试case的响应数据中获取依赖的数据

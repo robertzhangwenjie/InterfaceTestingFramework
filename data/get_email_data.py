@@ -6,7 +6,7 @@
 # @Software :   PyCharm
 
 from util import operation_yaml
-from data.get_data_config import GetDataConfig
+from data.get_config_path import GetDataConfig
 
 class GetEmailData(object):
     def __init__(self,email_config=None):

@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 import json,os
-from data.get_data_config import GetDataConfig
+from data.get_config_path import GetDataConfig
 
 
 class OperationJson(object):
@@ -23,6 +23,12 @@ class OperationJson(object):
         else:
             value = None
         return value
+
+    # 写
+    def write_data(self,data):
+        cookie_config = GetDataConfig().get_cookie_config()
+        with open(cookie_config,'w') as fp:
+            fp.write(json.dumps(data))
 
 if __name__ == '__main__':
     opes = OperationJson('../data_config/package.json')

@@ -1,12 +1,16 @@
 # -*- coding:utf-8 -*-
 import sys
-sys.path.append('D:\interface_test')
+import os
+sys.path.append(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
 
 from base.runmethod import RunMethod
 from data.get_data import GetData
 from util.common import CommonUtil
 from util.send_email import SendEmail
 from data.dependent_data import DependentData
+from util.operation_header import OperationHeader
+from util.operation_json import OperationJson
+from data.get_config_path import GetDataConfig
 import json
 class RunTest:
     def __init__(self):
@@ -39,7 +43,19 @@ class RunTest:
                     dependent_data = self.dependent_data.get_dependent_data(i)
                     # 将依赖的数据赋予相应的依赖
                     data[dependent_field] = dependent_data
-                res = self.run_method.run_main(method=method,url=url,data=data,header=header)
+                if header == 'write':
+                    res = self.run_method.post_main(url=url,data=data)
+                    ops_header = OperationHeader(res)
+                    ops_header.wirte_cookie()
+                    res = res.json()
+                elif header == 'yes':
+                    ops_json = OperationJson(GetDataConfig().get_cookie_config())
+                    cookie = ops_json.datas
+                    res = self.run_method.run_main(method=method,url=url,data=data,cookies=cookie)
+                else:
+                    res =self.run_method.run_main(method=method,url=url,data=data)
+
+                # res = self.run_method.run_main(method=method,url=url,data=data,header=header)
                 res = json.dumps(res,ensure_ascii=False,indent=4,sort_keys=True)
                 print(res)
                 if self.com_util.is_contain(expect,res):
@@ -51,6 +67,7 @@ class RunTest:
                     self.data.write_result(i, res)
                     fail_count.append(id)
         self.send_email.send_report(pass_count,fail_count)
+
 
 if __name__ == '__main__':
     run = RunTest()

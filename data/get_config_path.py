@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 # @Time     :   2018/10/31 6:42
 # @Author   :   robert
-# @FileName :   get_data_config.py
+# @FileName :   get_config_path.py
 # @Software :   PyCharm
 
 import os
@@ -29,7 +29,10 @@ class GetDataConfig(object):
         email_config = os.path.join(self.CONFIG_PATH,'email_config.yaml')
         return email_config
 
-
+    # 获取cookie文件路径
+    def get_cookie_config(self):
+        cookie_config = os.path.join(self.CONFIG_PATH,'cookie.json')
+        return cookie_config
 
 if __name__ == '__main__':
     data_config = GetDataConfig()
