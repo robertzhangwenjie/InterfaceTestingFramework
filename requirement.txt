@@ -4,7 +4,7 @@ decorator==4.3.0
 Django==2.1.2
 html-testRunner==1.1.2
 idna==2.7
-Jinja2==2.9.5
+Jinja2==2.11.3
 jsonpath-rw==1.4.0
 MarkupSafe==1.0
 mock==2.0.0
