@@ -11,7 +11,7 @@ mock==2.0.0
 pbr==4.3.0
 ply==3.11
 pytz==2018.5
-PyYAML==3.13
+PyYAML==5.4
 requests==2.19.1
 ruamel.yaml==0.15.75
 six==1.11.0
